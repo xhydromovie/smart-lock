@@ -63,6 +63,6 @@ if bool(face_names) == True:
     print("Na zdjęciu znajduje się: {}".format(face_names[0]))
     save_photo(frame)
 else:
-    print("Nie znaleziono")
+    print("Nie znaleziono...")
 
 vs.stop()
