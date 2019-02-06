@@ -25,8 +25,8 @@ known_face_encodings = [
 ]
 
 known_face_names = [
-    "bartek",
     "bartek1",
+    "bartek2",
 ]
 
 face_locations = []
