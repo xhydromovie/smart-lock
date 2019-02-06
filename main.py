@@ -5,6 +5,7 @@ import imutils
 import time
 import cv2
 
+
 def save_photo(p):
     title = input("Photo name: ")
     cv2.imwrite("{}.png".format(title), p)
@@ -12,13 +13,17 @@ def save_photo(p):
 print("[LOG] Running ...")
 
 bartek_image = face_recognition.load_image_file("bartek1.png")
+bartek_image2 = face_recognition.load_image_file("bartek2.jpg")
 bartek_encoding = face_recognition.face_encodings(bartek_image)[0]
+bartek_encoding2 = face_recognition.face_encodings(bartek_image2)[0]
 
 known_face_encodings = [
     bartek_encoding,
+    bartek_encoding2,
 ]
 
 known_face_names = [
+    "bartek",
     "bartek",
 ]
 
@@ -42,6 +47,9 @@ face_names = []
 for face_encoding in face_encodings:
     print("Petla")
     matches = face_recognition.compare_faces(known_face_encodings, face_encoding)
+    print(matches)
+    print(face_recognition.face_distance(known_face_encodings, face_encoding))
+
     name = "Unknown"
 
     if True in matches:
