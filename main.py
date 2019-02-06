@@ -5,6 +5,8 @@ import imutils
 import time
 import cv2
 
+#TODO
+#Create server: send succesful and not succesful attempt images / send SMS with notification / 
 
 def save_photo(p):
     title = input("Photo name: ")
@@ -24,7 +26,7 @@ known_face_encodings = [
 
 known_face_names = [
     "bartek",
-    "bartek",
+    "bartek1",
 ]
 
 face_locations = []
@@ -48,9 +50,8 @@ for face_encoding in face_encodings:
     print("Petla")
     matches = face_recognition.compare_faces(known_face_encodings, face_encoding)
     print(matches)
-    print(face_recognition.face_distance(known_face_encodings, face_encoding))
-
-    name = "Unknown"
+    distances = face_recognition.face_distance(known_face_encodings, face_encoding)
+    print(distances, distances[0])
 
     if True in matches:
         first_match_index = matches.index(True)
@@ -60,6 +61,7 @@ for face_encoding in face_encodings:
 
 if bool(face_names) == True:
     print("Na zdjęciu znajduje się: {}".format(face_names[0]))
+    save_photo(frame)
 else:
     print("Nie znaleziono")
 
