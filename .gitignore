@@ -1,3 +1,6 @@
 # test pngs
 *.png
 *.jpg
+*.pickle
+__pycache__/
+
