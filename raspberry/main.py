@@ -5,6 +5,7 @@ import imutils
 import time
 import cv2
 import requests
+import flask
 
 #TODO
 #Create server: send succesful and not succesful attempt images / send SMS with notification / 
@@ -15,6 +16,8 @@ def save_photo(p):
         cv2.imwrite("{}.png".format(title), p)
 
 print("[LOG] Running ...")
+
+app = flask.Flask(__name__)
 
 # bartek_image = face_recognition.load_image_file("bartek1.png")
 # bartek_image2 = face_recognition.load_image_file("bartek2.jpg")
