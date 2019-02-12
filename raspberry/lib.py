@@ -26,6 +26,7 @@ def send_photo(path, url):
     files = {'image': open(path, 'rb')} 
     r = requests.post(url, files=files)
     delete_photo(path)
-    print(r.text)
+    return r.text
 
-send_photo(save_photo(get_photo()), 'http://127.0.0.1:5000/recognize')
+def recognize(url="http://127.0.0.1:5000/recognize"):
+    return send_photo(save_photo(get_photo()), url)
