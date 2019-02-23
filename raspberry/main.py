@@ -44,7 +44,7 @@ vs = VideoStream(src=0).start()
 # vs = VideoStream(usePiCamera=True).start()
 time.sleep(2.0) # wait for heat camera 
 
-input("Press Enter")
+input("Press Enter!")
 
 frame = face_recognition.load_image_file("YZLESH.jpg")
 
