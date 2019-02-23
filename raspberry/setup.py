@@ -2,13 +2,16 @@ import lib, json
 
 button = True
 
-if button:
-    data = lib.recognize()
-    print(data)
-    parsed = json.loads(data)
-    print(parsed)
-
-    if parsed["success"] == True:
-        print("Zamek otwarty!")
+for n in range(4):
+    if button == True:
+        data = lib.recognize()
+        print(data)
+        parsed = json.loads(data)
+        print(parsed)
+        button = False
+        if parsed["success"] == True:
+            print("Zamek otwarty!")
+        else:
+            print("Nie otwarto")
     else:
-        print("Nie otwarto")
+        print("Podejscie:", n)

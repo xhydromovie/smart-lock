@@ -1,3 +1,4 @@
 {
-    "python.venvPath": "/home/hydro/.virtualenvs"
+    "python.venvPath": "/home/hydro/.virtualenvs",
+    "python.pythonPath": "/home/hydro/.virtualenvs/cv/bin/python"
 }
