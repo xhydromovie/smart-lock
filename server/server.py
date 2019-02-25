@@ -3,15 +3,17 @@ import requests
 import cv2 
 import pickle
 import face_recognition
+from time import gmtime, strftime
+import os
 
 app = flask.Flask(__name__)
 
 @app.route("/recognize", methods=["POST"])
 def racognize():
-    
     data = {"success": False}
 
     if flask.request.method == "POST":
+        print(flask.request.remote_addr)
         if flask.request.files.get("image"):
 
             image = flask.request.files.get('image')
@@ -46,7 +48,10 @@ def racognize():
 
 
                     
-                
+            if data["success"] == True:
+                date = strftime("%Y-%m-%d_%H-%M-%S", gmtime())
+                copy_frame = cv2.imread('img.jpg')
+                cv2.imwrite(os.getcwd() + '/photos/{}'.format(date + ".jpg"), copy_frame)
             return flask.jsonify(data)
        
 
@@ -57,11 +62,13 @@ def create_user():
         user_name = flask.request.form.get('username')
         print(user_name)
         r = requests.post("http://127.0.0.1:8008/action")
-        return "Dodano użytkownika pomyślnie"
+        return "Dodano użytkownika pomyslnie"
 
     if flask.request.method == "GET":
         return flask.render_template('user.html')
 
+# @app.rout('/encode', methods=["POST"])
+#     if flask.request
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port='8080')
