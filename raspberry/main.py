@@ -13,7 +13,7 @@ def save_photo(p):
     if title != "":
         cv2.imwrite("{}.png".format(title), p)
 
-print("[LOG] Running ...")
+print("[LOG] Running script ...")
 
 
 

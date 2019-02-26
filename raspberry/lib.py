@@ -28,5 +28,5 @@ def send_photo(path, url):
     delete_photo(path)
     return r.text
 
-def recognize(url="http://127.0.0.1:5000/recognize"):
+def recognize(url="http://127.0.0.1:5000/recognize"): # setup function
     return send_photo(save_photo(get_photo()), url)
