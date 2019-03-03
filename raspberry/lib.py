@@ -1,7 +1,6 @@
-import cv2, string, random, os, requests
-import time
+import cv2, string, random, os, requests, face_recognition
+import time, pickle
 from imutils.video import VideoStream
-
 
 def get_photo():
     vs = VideoStream().start()
@@ -28,5 +27,29 @@ def send_photo(path, url):
     delete_photo(path)
     return r.text
 
-def recognize(url="http://127.0.0.1:5000/recognize"): # setup function
-    return send_photo(save_photo(get_photo()), url)
+def recognize():
+    success = False
+    data = pickle.loads(open("encodings.pickle", "rb").read())
+    frame = get_photo()
+    copy = frame
+    save_photo(copy)
+
+    known_face_encodings = data["encodings"]
+    known_face_names = data["names"]
+
+    face_locations = []
+    face_encodings = []
+    face_names = []
+
+    face_locations = face_recognition.face_locations(frame)
+    face_encodings = face_recognition.face_encodings(frame, face_locations)
+
+    for face_encoding in face_encodings:
+        matches = face_recognition.compare_faces(known_face_encodings, face_encoding)
+        distances = face_recognition.face_distance(known_face_encodings, face_encoding)
+        print(distances, distances[0])
+
+    if True in matches:
+        success = True
+
+    return success
