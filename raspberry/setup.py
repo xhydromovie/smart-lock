@@ -8,6 +8,6 @@ if button:
     result = lib.recognize()
 
     if result is True:
-        print("Otworzono")
+        print("Otworzono zamek")
     else:
         print("Nie rozpoznano!")
