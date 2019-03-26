@@ -9,8 +9,8 @@ import os
 import cv2
 import pickle
 
-account_sid = 'AC2d122f6f9f1a8f43dfd6510aaa82cc79'
-auth_token = '1abaec098f7425c0b890fc12b0007350'
+account_sid = ''
+auth_token = ''
 client = Client(account_sid, auth_token)
 
 def send_sms(isCorrect, user):
@@ -18,8 +18,8 @@ def send_sms(isCorrect, user):
         message = client.messages \
                 .create(
                      body="Wlasnie " + user + " otworzyl drzwi.",
-                     from_='+48799448810',
-                     to='+48535850112'
+                     from_='+',
+                     to='+'
                  )
     else:
         message = client.messages \
